@@ -1,0 +1,23 @@
+{
+  "name": "chasing-bucky",
+  "version": "1.0.0",
+  "description": "Documenting Charlie's visits with Bucky on Parade.",
+  "main": "lib/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gtracy/chasing-bucky.git"
+  },
+  "author": "Greg Tracy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gtracy/chasing-bucky/issues"
+  },
+  "homepage": "https://github.com/gtracy/chasing-bucky#readme",
+  "dependencies": {
+    "airtable": "^0.5.4",
+    "express": "^4.16.2"
+  }
+}
