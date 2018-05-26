@@ -42,11 +42,16 @@ function ClientApp() {
         var coords = bucky.coordinates.split(',');
         var lat = parseFloat(coords[0])
         var lng = parseFloat(coords[1]);
+        var icon_img = (bucky.charlie && bucky.charlie.length > 0) ? "/img/marker-redish.png" : "/img/marker-black.png";
+        var icon = {
+            url: icon_img,
+            scaledSize: new google.maps.Size(30,30)
+        }
 
         // create the map marker for this Bucky
         var marker = new google.maps.Marker({
             position: {lat:lat,lng:lng},
-            //icon: icon,
+            icon: icon,
             map: that.map
         });
 
@@ -56,16 +61,17 @@ function ClientApp() {
     this.updateInfoWindow = function(marker,bucky) {
 
         marker.addListener('click', function() {
-            var thumbnail_url = "http://localhost:3000/img/badger-bw.jpg";
+            var thumbnail_url = "/img/badger-bw.jpg";
             if( bucky.charlie && bucky.charlie.length > 0 ) {
                 thumbnail_url = bucky.charlie[0].thumbnails.large.url;
             }
             var sponsor = (bucky.sponsor) ? bucky.sponsor : "Unknown";
+            var location = (bucky.locationName) ? bucky.locationName : "Unknown";
             // setup the info window bubble when clicked
             var contentString = '<div id="bucky">'
                 + '<div id="info-desc">'
                 + '  <div id="info-title"><h2>'+bucky.name+'</h2></div>'
-                + '  <p style="margin:0px;text-align:right;">'+bucky.locationName+'</p>'
+                + '  <p style="margin:0px;text-align:right;">'+location+'</p>'
                 + '  <hr>'
                 + '  <div id="info-desc">'
                 + '    <p> </p>'
