@@ -33,7 +33,9 @@ function ClientApp() {
         loadBucky();
 
         // there's only one popup bubble so we can limit what's open
-        that.infoWindow = new google.maps.InfoWindow({  });
+        that.infoWindow = new google.maps.InfoWindow({
+            maxWidth : 300
+          });
     };
 
     this.addBucky = function(bucky) {
@@ -54,20 +56,29 @@ function ClientApp() {
     this.updateInfoWindow = function(marker,bucky) {
 
         marker.addListener('click', function() {
+            var thumbnail_url = "http://localhost:3000/img/badger-bw.jpg";
+            if( bucky.charlie && bucky.charlie.length > 0 ) {
+                thumbnail_url = bucky.charlie[0].thumbnails.large.url;
+            }
+            var sponsor = (bucky.sponsor) ? bucky.sponsor : "Unknown";
             // setup the info window bubble when clicked
             var contentString = '<div id="bucky">'
-                + '<div id="info-pic">'
-                + '  <img style="max-width:100%" src="'+bucky.charlie[0].thumbnails.large.url+'">'
-                + '</div>'
                 + '<div id="info-desc">'
                 + '  <div id="info-title"><h2>'+bucky.name+'</h2></div>'
+                + '  <p style="margin:0px;text-align:right;">'+bucky.locationName+'</p>'
                 + '  <hr>'
-                + '  <div id="info-text">'
-                + '    <p>Artist: '+bucky.artistName+'</p>'
+                + '  <div id="info-desc">'
+                + '    <p> </p>'
+                + '    <p style="padding:2px;"><b>Artist:</b> '+bucky.artistName+'</p>'
+                + '    <p style="padding:2px;"><b>Sponsor:</b> '+sponsor+'</p>'
                 + '  </div>'
+                + '</div>'
+                + '<div id="info-pic">'
+                + '  <img style="max-width:100%" src="'+thumbnail_url+'">'
                 + '</div>'
                 + '</div>'
             that.infoWindow.setContent(contentString);
+            that.infoWindow.setPosition(that.map.getCenter());
             that.infoWindow.open(that.map, marker);
         });
     }
