@@ -251,7 +251,7 @@ function ClientApp() {
             "elementType": "geometry",
             "stylers": [
             {
-                "color": "#dadada"
+                "visibility": "off"
             }
             ]
         },
@@ -269,7 +269,7 @@ function ClientApp() {
             "elementType": "labels.text.fill",
             "stylers": [
             {
-                "color": "#616161"
+                "visibility": "off"
             }
             ]
         },
