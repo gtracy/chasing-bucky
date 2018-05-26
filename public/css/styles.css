@@ -1,0 +1,39 @@
+#map {
+    height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+hr {
+    color: #f00;
+    background-color: #f00;
+    height: 5px;
+}
+p {
+    padding: 0;
+    margin: 0;
+}
+#bucky-pic {
+    max-height: 25%;
+}
+#bucky {
+    width: 60%;
+}
+#info-pic {
+    width: 58%;
+    float: left;
+}
+#info-desc {
+    width: 40%;
+    float: right;
+}
+#info-title {
+    border: 1px solid;
+    text-align: right;
+    padding-right: 9px;
+    padding-bottom: 0;
+    padding-top: 0;
+}

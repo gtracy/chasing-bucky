@@ -1,0 +1,18 @@
+doctype html
+head
+  title Styled Maps - Night Mode
+  meta(name='viewport' content='initial-scale=1.0, user-scalable=no')
+  meta(charset='utf-8')
+  link(rel='stylesheet' type='text/css' href='css/styles.css' media='screen')
+#map
+script(src='/js/client.js')
+- var mapURL = 'https://maps.googleapis.com/maps/api/js?key=' + maps_key + '&callback=clientApp.initMap'
+script(src=mapURL)
+// Global site tag (gtag.js) - Google Analytics
+- var tagURL = 'https://www.googletagmanager.com/gtag/js?id=' + ga_key
+script(async='' src=tagURL)
+script.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '#{ga_key}');
