@@ -10,14 +10,14 @@ html, body {
 hr {
     color: #f00;
     background-color: #f00;
-    height: 5px;
+    height: 3px;
 }
 p {
     padding: 0;
     margin: 0;
 }
 h2 {
-    font: 2em georgia;
+    font: 1.7em georgia;
     margin-bottom: 0px;
 }
 #bucky-pic {
@@ -28,9 +28,9 @@ h2 {
     float: left;
 }
 #info-desc {
-    margin-bottom: 5px;
-    padding-bottom: 2px;
-    font: 1.1em georgia;
+    margin-bottom: 4px;
+    padding-bottom: 1px;
+    font: 1em georgia;
 }
 #info-title {
     text-align: right;

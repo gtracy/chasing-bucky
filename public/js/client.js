@@ -7,7 +7,7 @@ function ClientApp() {
     this.infoWindow;
 
     function loadBucky() {
-        fetch('/bucky').then(function(response) {
+        fetch('bucky').then(function(response) {
             if(response.ok) {
                 response.json().then(function(json) {
                     json.bucky.forEach((b) => {
@@ -34,7 +34,7 @@ function ClientApp() {
 
         // there's only one popup bubble so we can limit what's open
         that.infoWindow = new google.maps.InfoWindow({
-            maxWidth : 300
+            maxWidth : 200
           });
     };
 
@@ -42,7 +42,7 @@ function ClientApp() {
         var coords = bucky.coordinates.split(',');
         var lat = parseFloat(coords[0])
         var lng = parseFloat(coords[1]);
-        var icon_img = (bucky.charlie && bucky.charlie.length > 0) ? "/img/marker-redish.png" : "/img/marker-black.png";
+        var icon_img = (bucky.charlie && bucky.charlie.length > 0) ? "img/marker-redish.png" : "img/marker-black.png";
         var icon = {
             url: icon_img,
             scaledSize: new google.maps.Size(30,30)
@@ -61,7 +61,7 @@ function ClientApp() {
     this.updateInfoWindow = function(marker,bucky) {
 
         marker.addListener('click', function() {
-            var thumbnail_url = "/img/badger-bw.jpg";
+            var thumbnail_url = "img/badger-bw.jpg";
             if( bucky.charlie && bucky.charlie.length > 0 ) {
                 thumbnail_url = bucky.charlie[0].thumbnails.large.url;
             }
@@ -84,7 +84,7 @@ function ClientApp() {
                 + '</div>'
                 + '</div>'
             that.infoWindow.setContent(contentString);
-            that.infoWindow.setPosition(that.map.getCenter());
+            //that.infoWindow.setPosition(that.map.getCenter());
             that.infoWindow.open(that.map, marker);
         });
     }
