@@ -23,10 +23,6 @@ function ClientApp() {
         });
     }
 
-    this.hello = function() {
-        console.log('hi greg');
-    };
-
     this.initMap = function() {
         that.map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 43.0731, lng: -89.4011}, // madison,wi
@@ -50,7 +46,16 @@ function ClientApp() {
         var coords = bucky.coordinates.split(',');
         var lat = parseFloat(coords[0])
         var lng = parseFloat(coords[1]);
-        var icon_img = (bucky.charlie && bucky.charlie.length > 0) ? "img/marker-red.png" : "img/marker-black.png";
+
+        // initialize the marker icon based on what's at that location
+        var icon_img = "img/marker-black.png";
+        if( bucky.charlie && bucky.charlie.length > 0 ) {
+            if( bucky.name === 'Golden Bucky' ) {
+                icon_img = "img/marker-gold.png";
+            } else {
+                icon_img = "img/marker-red.png";
+            }
+        }
         var icon = {
             url: icon_img,
             scaledSize: new google.maps.Size(30,30)
