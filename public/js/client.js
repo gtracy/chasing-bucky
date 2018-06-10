@@ -50,9 +50,11 @@ function ClientApp() {
 
         // initialize the marker icon based on what's at that location
         var icon_img = "img/marker-black.png";
+        var golden = false;
         if( bucky.charlie && bucky.charlie.length > 0 ) {
             if( bucky.name === 'Golden Bucky' ) {
                 icon_img = "img/marker-gold.png";
+                golden = true;
             } else {
                 icon_img = "img/marker-red.png";
             }
@@ -69,10 +71,10 @@ function ClientApp() {
             map: that.map
         });
 
-        that.updateInfoWindow(marker,bucky);
+        that.updateInfoWindow(marker,bucky,golden);
     };
 
-    this.updateInfoWindow = function(marker,bucky) {
+    this.updateInfoWindow = function(marker,bucky,golden) {
 
         marker.addListener('click', function() {
             var thumbnail_url = "img/badger-bw.jpg";
@@ -81,12 +83,14 @@ function ClientApp() {
             }
             var sponsor = (bucky.sponsor) ? bucky.sponsor : "Unknown";
             var location = (bucky.locationName) ? bucky.locationName : "Unknown";
+            var hr_class = (golden) ? "gold" : "red";
+
             // setup the info window bubble when clicked
             var contentString = '<div id="bucky">'
                 + '<div id="info-desc">'
                 + '  <div id="info-title"><h2>'+bucky.name+'</h2></div>'
                 + '  <p style="margin:0px;text-align:right;">'+location+'</p>'
-                + '  <hr>'
+                + '  <hr class="'+hr_class+'">'
                 + '  <div id="info-desc">'
                 + '    <p> </p>'
                 + '    <p style="padding:2px;"><b>Artist:</b> '+bucky.artistName+'</p>'

@@ -8,9 +8,15 @@ html, body {
     padding: 0;
 }
 hr {
+    height: 3px;
+}
+hr.red {
     color: #f00;
     background-color: #f00;
-    height: 3px;
+}
+hr.gold {
+    color: #FFC819;
+    background-color: #FFC819;
 }
 p {
     padding: 0;
