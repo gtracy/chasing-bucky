@@ -38,7 +38,7 @@ function ClientApp() {
 
         that.intervalID = window.setInterval(function() {
             that.getUserLocation();
-        }, 7000);
+        }, 1000);
 
     };
 
