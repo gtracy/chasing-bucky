@@ -31,14 +31,15 @@ function ClientApp() {
         });
         loadBucky();
 
-        // there's only one popup bubble so we can limit what's open
+        // there's only one popup bubble on Bucky so we can limit what's open
         that.infoWindow = new google.maps.InfoWindow({
             maxWidth : 200
         });
 
+        // refresh the user's location regularly
         that.intervalID = window.setInterval(function() {
             that.getUserLocation();
-        }, 1000);
+        }, 1500);
 
     };
 
@@ -129,6 +130,25 @@ function ClientApp() {
                     icon: icon,
                     map: that.map
                 });
+                var locationInfo = new google.maps.InfoWindow({
+                    maxWidth : 200
+                });
+                that.userMarker.addListener('click',function() {
+                    var msgs = [
+                        "you look great today",
+                        "how did you get here?",
+                        "does your mom know you're here?",
+                        "love your outfit",
+                        "love your hair today",
+                        "you're awesome",
+                        "look around, do you see Bucky yet?",
+                        "chances are, Charlie is nearby",
+                        "smile. you'll make someone's day"
+                    ]
+                    locationInfo.setContent(msgs[Math.floor(Math.random() * msgs.length)]);
+                    locationInfo.open(that.map, that.userMarker);
+                });
+        
                 that.quitRefresh = false;
         
             }, function() {
