@@ -13,6 +13,10 @@ app.get('/', (req, res) => {
     res.render('index', { ga_key: config.ga_key, maps_key: config.maps_key });
 });
 
+app.get('/emma', (req, res) => {
+    res.sendFile(__dirname + '/public/emma.html');
+});
+
 app.get('/bucky', (req,res) => {
     // fetch from Airtable
     var buckies = [];
