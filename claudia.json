@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "chasing-bucky-executor",
+    "name": "chasing-bucky",
+    "region": "us-east-2"
+  },
+  "api": {
+    "id": "2upuj3dn4a"
+  }
+}
